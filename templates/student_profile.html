@@ -21,6 +21,7 @@
                 </div>
             </div>
         </div>
+        {% if coding > 16 or leadership > 16 or communication > 16 or presentation > 16 %}
         <div class="std-graph">
             <canvas id="RadarChart" width="" height=""></canvas>
             <ul class="legend-list">
@@ -30,12 +31,15 @@
                 <li>Presentation designing: <span>{{presentation}}</span></li>
             </ul>
         </div>
+        {% endif %}
     </div>
 
+    {% if coding > 16 or leadership > 16 or communication > 16 or presentation > 16 %}
     <div class="other-team-wrap container std-box" style="width: 1200px;">
         <h2>Other Members</h2>
         <div id="othermembers"></div>
     </div>
+    {% endif %}
 
     <script>
         document.addEventListener("DOMContentLoaded", (event) => {
