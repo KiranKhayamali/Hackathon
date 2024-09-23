@@ -290,10 +290,26 @@ class student_form_view(View):
 class Student_Profile(View):
     def get(self,request):
         user = request.user
-        coding  = list(Skillset.objects.filter(user=user).values('coding'))[-1]
-        leadership  = list(Skillset.objects.filter(user=user).values('leadership'))[-1]
-        communication  = list(Skillset.objects.filter(user=user).values('communication'))[-1]
-        presentation  = list(Skillset.objects.filter(user=user).values('presentation'))[-1]
+        try:
+            coding = list(Skillset.objects.filter(user=user).values('coding'))[-1]
+        except:
+            coding = {'coding' : 0}
+
+        try:
+            leadership  = list(Skillset.objects.filter(user=user).values('leadership'))[-1]
+        except:
+            leadership = {'leadership' : 0}
+
+        try:
+            communication  = list(Skillset.objects.filter(user=user).values('communication'))[-1]
+        except:
+            communication = {'communication' : 0}
+
+        try:
+            presentation  = list(Skillset.objects.filter(user=user).values('presentation'))[-1]
+        except:
+            presentation = {'presentation' : 0}
+        
 
         context = {
             'user_id': user.id,
